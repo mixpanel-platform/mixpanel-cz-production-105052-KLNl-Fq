@@ -33,7 +33,181 @@
 
         }
         
-        var firstChart =Mp.api.
+        var params = {
+          from: moment().subtract(30,'days'),
+          to: moment();
+          
+        }
         
+
         
+    var firstChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Welcome" in string(properties["Page"])',
+    });
+    
+    var secondChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Beloved name" in string(properties["Page"])',
+    });
+    
+    var thirdChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Medications" in string(properties["Page"])',
+    });
+    
+    var fourthChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Insurance" in string(properties["Page"])',
+    });
+    
+    var fifthChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Drivers license" in string(properties["Page"])',
+    });
+    
+    var sixthChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Information" in string(properties["Page"])',
+    });
+    
+    var seventhChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Pharmacy" in string(properties["Page"])',
+    });
+    
+    var eighthChart = MP.api.segment('Onboarding', 'Operating System', {
+      from: date_from, 
+      to: date_to,
+      unit: 'week',
+      limit: 12, 
+      'where': '"Beloved" in string(properties["Type"])',
+    });
+  
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+       $.when(firstChart, secondChart, thirdChart, fourthChart, fifthChart, sixthChart, seventhChart, eighthChart).done(function(firstChart, secondChart, thirdChart, fourthChart, fifthChart, sixthChart, seventhChart, eighthChart) {
+            
+           
+            
+            var drawGraph = function(firstChartData, secondChartData, thirdChartData, fourthChartData, fifthChartData, sixthChartData, seventhChartData, eighthChartData){
+          
+                
+              
+                $('<div class="first"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: firstChartData,
+                    highchartsOptions : {title: {text:"Welcome"}}
+                });
+                
+                $('<div class="second"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: secondChartData, 
+                    highchartsOptions : {title: {text:"Beloved"}}
+                });
+                
+                $('<div class="third"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: thirdChartData, 
+                    highchartsOptions : {title: {text:"Medications"}}
+                });
+                
+                $('<div class="fourth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: fourthChartData, 
+                    highchartsOptions : {title: {text:"Insurance"}}
+                });
+                
+                 $('<div class="fifth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: fifthChartData, 
+                    highchartsOptions : {title: {text:"Driver's License"}}
+                });
+                
+                 $('<div class="sixth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: sixthChartData, 
+                    highchartsOptions : {title: {text:"Information"}}
+                });
+                
+                 $('<div class="seventh"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: seventhChartData, 
+                    highchartsOptions : {title: {text:"Pharmacy"}}
+                });
+                
+                 $('<div class="eighth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
+                    chartType: 'line',
+                    data: eighthChartData, 
+                    highchartsOptions : {title: {text:"Beloved"}}
+                });
+                
+                
+                
+                
+                
+                
+                //$('.mixpanel-platform-multi_selector').css({'clear':'both'});
+                //$('.title').css({'width':'55px'});
+                $('.color_toggle_dropdown').each(function(){this.style.setProperty('width', '170px', 'important')});
+                $('.title').each(function(){this.style.setProperty('width', '105px', 'important')});
+                
+            }
+            
+            
+            drawGraph(firstChart.values(), secondChart.values(), thirdChart.values(), fourthChart.values(), fifthChart.values(), sixthChart.values(), seventhChart.values(), eighthChart.values());
+            
+        });
+     };
+
+        dateSelect.on('change', function(dateRange){
+  
+            $(".first").empty();
+            $(".second").empty();
+            $(".third").empty();
+            $(".fourth").empty();
+            $(".fifth").empty();
+            $(".sixth").empty();
+            $(".seventh").empty();
+            $(".eighth").empty();
+            runQuery();
+      });
+      
+      runQuery();
+
     </script>
+  </body>
+</html>
+    
+    
+      
