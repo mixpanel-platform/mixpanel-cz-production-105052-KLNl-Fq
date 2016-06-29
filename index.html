@@ -35,7 +35,7 @@
         
         var params = {
           from: moment().subtract(30,'days'),
-          to: moment();
+          to: moment()
           
         }
         
@@ -94,7 +94,7 @@
       to: date_to,
       unit: 'week',
       limit: 12, 
-      'where': '"Pharmacy" in string(properties["Page"])',
+      'where': '"Beloved" in string(properties["Type"])',
     });
     
     var eighthChart = MP.api.segment('Onboarding', 'Operating System', {
@@ -102,7 +102,7 @@
       to: date_to,
       unit: 'week',
       limit: 12, 
-      'where': '"Beloved" in string(properties["Type"])',
+      'where': '"Pharmacy" in string(properties["Page"])',
     });
   
     
@@ -163,13 +163,13 @@
                  $('<div class="seventh"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
                     chartType: 'line',
                     data: seventhChartData, 
-                    highchartsOptions : {title: {text:"Pharmacy"}}
+                    highchartsOptions : {title: {text:"Beloved"}}
                 });
                 
                  $('<div class="eighth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
                     chartType: 'line',
                     data: eighthChartData, 
-                    highchartsOptions : {title: {text:"Beloved"}}
+                    highchartsOptions : {title: {text:"Pharmacy"}}
                 });
                 
                 
