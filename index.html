@@ -15,132 +15,25 @@
       <div id="graph"></div>
     </div>
     <div id="table"></div>
-
-
+    
     <script>
-    var dateSelect  = $('#dateSelect').MPDatepicker();
-    var runQuery = function() {
-    /*  First Chart */
-  
+      var dateSelect = $('#dateSelect').MPDatepicker();
+      var runQuery = function() {
         var date_from;
         var date_to;
         var dateRange = dateSelect.MPDatepicker('value');
         
-        if(typeof dateRange == "undefined") {
-          var date_from = moment().subtract(1, 'month');
+        if( typeof dateRange == 'undefined') {
+          var date_from = moment().subtrack(1, 'month');
           var date_to = moment();
-        } else {
-          var date_from = dateRange.from.toISOString().substring(0, 10);
-          var date_to = dateRange.to.toISOString().substring(0, 10);
         }
+        else {
+          var date_from = dateRange.from.toISOString().substring(0,10);
+          var date_to = dateRange.to.toISOString().substring(0,10);
 
-   
-        /*  First Chart */
-
-       var overall_ratio = MP.api.segment('Index viewed', 'Type', {
-            from: date_from,
-            to: date_to,
-            unit: 'week',
-            limit: 12,
-            'where': 'defined (properties["Type"])',
-        });
-
-        var first_chart =  MP.api.segment('Beloved added', 'Beloved cohort', {
-            from: date_from,
-            to: date_to,
-            unit: 'week',
-            limit: 12,
-            'where': 'defined (properties["Beloved cohort"])',
-        });
+        }
+        
+        var firstChart =Mp.api.
         
         
-        var second_chart =  MP.api.segment('Item Added', {
-            from: date_from,
-            to: date_to,
-            unit: 'week',
-            limit: 100,
-            'where': "properties["Type"] == 'Medication'",
-        });
-       
-        var third_chart =  MP.api.segment('Item Added', {
-            from: date_from,
-            to: date_to,
-            unit: 'week',
-            limit: 100,
-             'where': "properties["Type"] == 'Insurance Card'",
-        });
-       
-        
-        var fourth_chart =  MP.api.segment('Item Added', {
-            from: date_from,
-            to: date_to,
-            unit: 'week',
-            limit: 100,
-            'where': "properties["Card type"] == 'Driver's License",
-        });
-        
-       
-        
-        $.when(overall_ratio, first_chart, second_chart, third_chart, fourth_chart).done(function(overall_ratio, first_chart, second_chart, third_chart, fourth_chart) {
-            
-           
-            
-            var drawGraph = function(overallRatioData, firstChartData, secondChartData, thirdChartData, fourthChartData){
-          
-                
-                $('<div class="overall"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
-                    chartType: 'bar',
-                    data: overallRatioData,
-                    highchartsOptions : {title: {text:"Purchase Complete by UTM Campaign"}}
-                });
-
-                $('<div class="first"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
-                    chartType: 'bar',
-                    data: firstChartData,
-                    highchartsOptions : {title: {text:"Purchase Complete by UTM Source"}}
-                });
-                
-                $('<div class="second"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
-                    chartType: 'bar',
-                    data: secondChartData, 
-                    highchartsOptions : {title: {text:"Purchase Complete by Browser"}}
-                });
-                
-                $('<div class="third"></div>').css({'width':'460px', 'float':'left'}).appendTo('body').MPChart({
-                    chartType: 'bar',
-                    data: thirdChartData, 
-                    highchartsOptions : {title: {text:"Purchase Complete by Device"}}
-                });
-                
-                $('<div class="fourth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
-                    chartType: 'bar',
-                    data: fourthChartData, 
-                    highchartsOptions : {title: {text:"Purchase Complete by Operating System"}}
-                });
-                //$('.mixpanel-platform-multi_selector').css({'clear':'both'});
-                //$('.title').css({'width':'55px'});
-                $('.color_toggle_dropdown').each(function(){this.style.setProperty('width', '170px', 'important')});
-                $('.title').each(function(){this.style.setProperty('width', '105px', 'important')});
-                
-            }
-            
-            
-            drawGraph(overall_ratio.values(), first_chart.values(), second_chart.values(), third_chart.values(), fourth_chart.values());
-            
-        });
-     };
-
-        dateSelect.on('change', function(dateRange){
-            $(".overall").empty();
-            $(".first").empty();
-            $(".second").empty();
-            $(".third").empty();
-            $(".fourth").empty();
-            runQuery();
-      });
-      
-      runQuery();
-
     </script>
-  </body>
-</html>
