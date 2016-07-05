@@ -57,7 +57,7 @@
       'where': '"Beloved name" in string(properties["Page"])',
     });
     
-    var thirdChart = MP.api.segment('Onboarding', 'Operating System', {
+    var thirdChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
       unit: 'day',
@@ -65,7 +65,7 @@
       'where': '"Medications" in string(properties["Page"])',
     });
     
-    var fourthChart = MP.api.segment('Onboarding', 'Operating System', {
+    var fourthChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
       unit: 'day',
@@ -73,7 +73,7 @@
       'where': '"Insurance" in string(properties["Page"])',
     });
     
-    var fifthChart = MP.api.segment('Onboarding', 'Operating System', {
+    var fifthChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
       unit: 'day',
@@ -81,7 +81,7 @@
       'where': '"Drivers license" in string(properties["Page"])',
     });
     
-    var sixthChart = MP.api.segment('Onboarding', 'Operating System', {
+    var sixthChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
       unit: 'day',
@@ -99,7 +99,7 @@
     
     console.log(seventhChart)
     
-    var eighthChart = MP.api.segment('Onboarding', 'Operating System', {
+    var eighthChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
       unit: 'day',
