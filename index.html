@@ -105,8 +105,7 @@
       'where': '"Pharmacy" in string(properties["Page"])',
     });
     
-    console.log(seventhChart.values())
-  
+   
     
     
     
@@ -167,6 +166,8 @@
                     data: seventhChartData, 
                     highchartsOptions : {title: {text:"Beloved"}}
                 });
+                
+                console.log(seventhChartData)
                 
                  $('<div class="eighth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
                     chartType: 'line',
