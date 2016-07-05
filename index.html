@@ -95,7 +95,12 @@
       unit: 'week',
       limit: 12, 
       'where': '"Beloved" in string(properties["Type"])',
-    });
+    }).done(function(queryResults){
+      console.log(queryResults.values());
+    })
+    ;
+    
+    console.log(seventhChart)
     
     var eighthChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
@@ -105,6 +110,7 @@
       'where': '"Pharmacy" in string(properties["Page"])',
     });
     
+  
    
     
     
@@ -167,7 +173,6 @@
                     highchartsOptions : {title: {text:"Beloved"}}
                 });
                 
-                console.log(seventhChartData)
                 
                  $('<div class="eighth"></div>').css({'width':'460px', 'float':'right'}).appendTo('body').MPChart({
                     chartType: 'line',
