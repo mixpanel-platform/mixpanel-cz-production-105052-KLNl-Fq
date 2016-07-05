@@ -44,69 +44,66 @@
     var firstChart = MP.api.segment('Onboarding', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Welcome" in string(properties["Page"])',
     });
     
     var secondChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Beloved name" in string(properties["Page"])',
     });
     
     var thirdChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Medications" in string(properties["Page"])',
     });
     
     var fourthChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Insurance" in string(properties["Page"])',
     });
     
     var fifthChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Drivers license" in string(properties["Page"])',
     });
     
     var sixthChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Information" in string(properties["Page"])',
     });
     
-    var seventhChart = MP.api.segment('Onboarding', 'Operating System', {
+    var seventhChart = MP.api.segment('Menu viewed', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Beloved" in string(properties["Type"])',
-    }).done(function(queryResults){
-      console.log(queryResults.values());
-    })
-    ;
+    });
     
     console.log(seventhChart)
     
     var eighthChart = MP.api.segment('Onboarding', 'Operating System', {
       from: date_from, 
       to: date_to,
-      unit: 'week',
-      limit: 12, 
+      unit: 'day',
+      limit: 30, 
       'where': '"Pharmacy" in string(properties["Page"])',
     });
     
